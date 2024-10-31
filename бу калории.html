@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бу! Калории</title>
+    <style>
+        /* Основной стиль для фонового изображения и центрирования контента */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/D5KKNpK/20-1603457923-640x320.jpg'); /* Ссылка на фоновое изображение */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+        }
+        
+        /* Контейнер для содержания вопроса и формы с эффектом размытия */
+        .container {
+            position: relative;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 0; /* контейнер будет под изображением */
+        }
+
+        /* Контейнер для изображения */
+        .image-container {
+            margin: 20px 0; /* добавлено для отступов сверху и снизу */
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 200px; /* задает максимальный размер изображения */
+            border-radius: 8px; /* скругляет углы изображения */
+        }
+
+        /* Вопрос */
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        /* Поле для ответа и кнопка */
+        input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="text"] {
+            border: 1px solid #ddd;
+            background-color: rgba(211, 211, 211, 0.3); /* Светло-серый с прозрачностью */
+        }
+        button {
+            margin-top: 15px;
+            background-color: #fe5000;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #fe5000;
+        }
+
+        /* Сообщение об ошибке или правильном ответе */
+        .message {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Основной контейнер для текста и формы -->
+<div class="container">
+    <h1>Бу! Калорийный ужас. Но сегодня только на картинке. Найди ответ:</h1>
+    
+    <!-- Контейнер для изображения -->
+    <div class="image-container">
+        <img src="https://i.ibb.co/bHLLBrf/image.png" alt="Уффф, калории">
+    </div>
+
+    <input type="text" id="answer" placeholder="Введите ответ">
+    <button onclick="checkAnswer()">Проверить ответ</button>
+    <p id="message" class="message"></p>
+</div>
+
+<script>
+    function checkAnswer() {
+        const answer = document.getElementById("answer").value.toLowerCase(); // Преобразование в нижний регистр
+        const message = document.getElementById("message");
+        
+        if (answer === "170") { // Правильный ответ также в нижнем регистре
+            message.innerHTML = `
+                Хоть тварей много у нас с вами,<br>
+                Такая тут всего одна.<br>
+                И примечательна примета,<br>
+                почти из золота она.<br>
+                И хвост, и грива, даже нос,<br>
+                И к квадрату зад прирос.<br>
+                Под ним ты, кстати, посмотри,<br>
+                Там где-то кьар-код внутри.
+            `;
+            message.className = "message success";
+        } else {
+            message.textContent = "Неправильный ответ";
+            message.className = "message error";
+        }
+    }
+</script>
+
+</body>
+</html>
